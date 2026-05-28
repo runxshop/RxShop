@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RX SHOP - Smart Summer Essentials</title>
+    <title>RX SHOP - Smart Summer Gadgets</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,18 +21,34 @@
         .products-section { padding: 80px 40px; max-width: 1400px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 60px; width: 100%; }
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .product-card { background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; overflow: hidden; border: 1px solid #2a2a2a; transition: all 0.4s ease; }
+        .product-card { background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; overflow: hidden; border: 1px solid #2a2a2a; transition: all 0.4s ease; display: flex; flex-direction: column; justify-content: space-between; }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(229, 9, 20, 0.2); border-color: #e50914; }
-        .product-image { height: 250px; background: linear-gradient(135deg, #2a2a2a, #1a1a1a); display: flex; align-items: center; justify-content: center; font-size: 4.5rem; }
-        .product-info { padding: 25px; }
-        .product-tag { display: inline-block; background: rgba(229, 9, 20, 0.2); color: #e50914; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; border: 1px solid rgba(229, 9, 20, 0.3); }
-        .product-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; min-height: 60px; }
-        .product-desc { color: #888; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.6; min-height: 70px; }
-        .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .product-image-container { height: 280px; width: 100%; background: #151515; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .product-card:hover .product-image { transform: scale(1.05); }
+        .product-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-tag { display: inline-block; background: rgba(229, 9, 20, 0.2); color: #e50914; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; border: 1px solid rgba(229, 9, 20, 0.3); align-self: flex-start; }
+        .product-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: #ffffff; }
+        .product-desc { color: #888; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.6; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; }
         .price { font-size: 1.6rem; font-weight: 800; color: #e50914; }
-        .price .currency { font-size: 1rem; color: #888; }
-        .buy-btn { background: #22c55e; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: 700; transition: all 0.3s ease; font-size: 0.95rem; display: inline-block; }
-        .buy-btn:hover { background: #16a34a; transform: scale(1.05); box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4); }
+        .buy-btn { background: #e50914; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-weight: 700; transition: all 0.3s ease; font-size: 0.95rem; cursor: pointer; font-family: 'Cairo', sans-serif; }
+        .buy-btn:hover { background: #ff1a25; transform: scale(1.05); box-shadow: 0 5px 20px rgba(229, 9, 20, 0.4); }
+        
+        /* Modal Popup Form */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: #121212; border: 2px solid #e50914; padding: 30px; border-radius: 20px; max-width: 500px; width: 100%; position: relative; box-shadow: 0 0 30px rgba(229, 9, 20, 0.3); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: #888; cursor: pointer; }
+        .close-modal:hover { color: #fff; }
+        .modal h3 { font-size: 1.8rem; margin-bottom: 10px; color: #e50914; }
+        .modal p { color: #888; margin-bottom: 20px; font-size: 0.95rem; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; font-size: 0.9rem; color: #ccc; margin-bottom: 5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; font-family: 'Cairo', sans-serif; }
+        .form-group input:focus { border-color: #e50914; outline: none; }
+        .submit-order-btn { width: 100%; background: #22c55e; color: white; border: none; padding: 14px; border-radius: 30px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; font-family: 'Cairo', sans-serif; }
+        .submit-order-btn:hover { background: #16a34a; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4); }
+
         .features { background: #0f0f0f; padding: 80px 40px; border-top: 1px solid #1a1a1a; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
         .feature { text-align: center; padding: 30px; background: linear-gradient(145deg, #1a1a1a, #0f0f0f); border-radius: 20px; border: 1px solid #2a2a2a; }
@@ -46,108 +62,112 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+
     <header>
         <div class="logo">RX <span>SHOP</span></div>
         <nav>
             <a href="#home">Home</a>
             <a href="#products">Products</a>
-            <a href="#features">Features</a>
+            <a href="#features">Our Guarantee</a>
         </nav>
     </header>
     
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>Welcome to <span class="rx">RX</span> SHOP</h1>
-        <p>Smart & innovative summer essentials designed to make your life easier</p>
-        <button class="hero-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Trendy Products 🔥</button>
+        <p>Innovative & trending lifestyle essentials designed for convenience</p>
+        <button class="hero-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Hot Deals 🔥</button>
     </section>
     
-    <!-- Products Section -->
     <section class="products-section" id="products">
-        <h2 class="section-title">🔥 Trending This Summer</h2>
+        <h2 class="section-title">🔥 Trending Viral Gadgets</h2>
         <div class="products-grid">
             
-            <!-- Product 1: Neck Fan -->
             <div class="product-card">
-                <div class="product-image">🌬️</div>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?auto=format&fit=crop&w=500&q=80" alt="Neck Fan" class="product-image">
+                </div>
                 <div class="product-info">
                     <span class="product-tag">Top Seller</span>
                     <h3 class="product-name">8000mAh Bladeless Neck Fan</h3>
-                    <p class="product-desc">Portable, wearable, and mute rechargeable air cooler with an LED digital display. Stay cool hands-free outdoors.</p>
+                    <p class="product-desc">Hands-free, quiet, wearable air cooler with a premium LED digital status display. Ideal for outdoor workouts and commuting.</p>
                     <div class="product-footer">
-                        <span class="price">149 <span class="currency">SAR</span></span>
-                        <a href="https://wa.me/966500000000?text=Hello,%20I%20want%20to%20order%20the%208000mAh%20Bladeless%20Neck%20Fan%20for%20149%20SAR" target="_blank" class="buy-btn">Order on WhatsApp 💬</a>
+                        <span class="price">$39.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('8000mAh Bladeless Neck Fan', '$39.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
             
-            <!-- Product 2: Camping Fan -->
             <div class="product-card">
-                <div class="product-image">⛺</div>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1618945203341-a6ff336049fe?auto=format&fit=crop&w=500&q=80" alt="Camping Fan" class="product-image">
+                </div>
                 <div class="product-info">
                     <span class="product-tag">Hot Item</span>
-                    <h3 class="product-name">Xiaomi Wireless Camping Fan</h3>
-                    <p class="product-desc">High-capacity 8000mAh desktop air circulator and ceiling fan with built-in LED light and heavy-duty clip-on mechanism.</p>
+                    <h3 class="product-name">Wireless Outdoor Camping Fan</h3>
+                    <p class="product-desc">Heavy-duty 8000mAh rechargeable desktop air circulator and ceiling fan equipped with ultra-bright built-in LED lights.</p>
                     <div class="product-footer">
-                        <span class="price">189 <span class="currency">SAR</span></span>
-                        <a href="https://wa.me/966500000000?text=Hello,%20I%20want%20to%20order%20the%20Xiaomi%20Wireless%20Camping%20Fan%20for%20189%20SAR" target="_blank" class="buy-btn">Order on WhatsApp 💬</a>
+                        <span class="price">$49.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('Wireless Outdoor Camping Fan', '$49.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 3: Press Ice Tray -->
             <div class="product-card">
-                <div class="product-image">🧊</div>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1544211116-43d9b4b0051e?auto=format&fit=crop&w=500&q=80" alt="Ice Cube Box" class="product-image">
+                </div>
                 <div class="product-info">
                     <span class="product-tag">Must Have</span>
                     <h3 class="product-name">One-Press Ice Cube Maker Box</h3>
-                    <p class="product-desc">Large capacity ice storage mold. Release dozens of ice cubes instantly with just one simple press. Mess-free and quick.</p>
+                    <p class="product-desc">Large capacity sleek storage solution. Freeze and instantly release dozens of perfect ice cubes with one single press.</p>
                     <div class="product-footer">
-                        <span class="price">79 <span class="currency">SAR</span></span>
-                        <a href="https://wa.me/966500000000?text=Hello,%20I%20want%20to%20order%20the%20One-Press%20Ice%20Cube%20Maker%20Box%20for%2079%20SAR" target="_blank" class="buy-btn">Order on WhatsApp 💬</a>
+                        <span class="price">$24.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('One-Press Ice Cube Maker Box', '$24.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 4: AI Smart Glasses -->
             <div class="product-card">
-                <div class="product-image">🕶️</div>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=500&q=80" alt="Smart Glasses" class="product-image">
+                </div>
                 <div class="product-info">
                     <span class="product-tag">Futuristic</span>
                     <h3 class="product-name">MT5 Ultra AI Smart Glasses</h3>
-                    <p class="product-desc">Real-time translation wearable device featuring an 800W pixel HD camera for instant photo and video recording on the go.</p>
+                    <p class="product-desc">Cutting-edge real-time audio translation glasses with a built-in 800W pixel HD camera for point-and-shoot recording.</p>
                     <div class="product-footer">
-                        <span class="price">399 <span class="currency">SAR</span></span>
-                        <a href="https://wa.me/966500000000?text=Hello,%20I%20want%20to%20order%20the%20MT5%20Ultra%20AI%20Smart%20Glasses%20for%20399%20SAR" target="_blank" class="buy-btn">Order on WhatsApp 💬</a>
+                        <span class="price">$119.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('MT5 Ultra AI Smart Glasses', '$119.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 5: Mosquito Swatter -->
             <div class="product-card">
-                <div class="product-image">⚡</div>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?auto=format&fit=crop&w=500&q=80" alt="Mosquito Zapper" class="product-image">
+                </div>
                 <div class="product-info">
-                    <span class="product-tag">Practical</span>
+                    <span class="product-tag">Home Utility</span>
                     <h3 class="product-name">2-in-1 Foldable Mosquito Swatter</h3>
-                    <p class="product-desc">Electric bug zapper bat with built-in purple UV light trap. Foldable design, USB rechargeable, safe and highly effective.</p>
+                    <p class="product-desc">Smart electric bug zapper racket utilizing safe UV light traps to attract and eliminate insects instantly. USB Rechargeable.</p>
                     <div class="product-footer">
-                        <span class="price">69 <span class="currency">SAR</span></span>
-                        <a href="https://wa.me/966500000000?text=Hello,%20I%20want%20to%20order%20the%202-in-1%20Foldable%20Mosquito%20Swatter%20for%2069%20SAR" target="_blank" class="buy-btn">Order on WhatsApp 💬</a>
+                        <span class="price">$19.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('2-in-1 Foldable Mosquito Swatter', '$19.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Product 6: Smoothie Cup -->
             <div class="product-card">
-                <div class="product-image">🥤</div>
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=500&q=80" alt="Smoothie Cup" class="product-image">
+                </div>
                 <div class="product-info">
-                    <span class="product-tag">Fun & DIY</span>
+                    <span class="product-tag">Viral Trend</span>
                     <h3 class="product-name">Magic Quick Freeze Slushie Cup</h3>
-                    <p class="product-desc">Squeeze homemade smoothie cup. Freeze the cup, pour your favorite juice or milk, squeeze it, and enjoy instant slushie!</p>
+                    <p class="product-desc">The viral DIY squeeze cup. Pour your favorite beverage, squeeze for less than a minute, and watch it turn into fresh slushie.</p>
                     <div class="product-footer">
-                        <span class="price">59 <span class="currency">SAR</span></span>
-                        <a href="https://wa.me/966500000000?text=Hello,%20I%20want%20to%20order%20the%20Magic%20Quick%20Freeze%20Slushie%20Cup%20for%2059%20SAR" target="_blank" class="buy-btn">Order on WhatsApp 💬</a>
+                        <span class="price">$15.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('Magic Quick Freeze Slushie Cup', '$15.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -155,12 +175,42 @@
         </div>
     </section>
     
-    <!-- Features Section -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            <h3>Complete Your Order</h3>
+            <p>Please fill out your delivery details. No upfront payment required (Cash on Delivery Available / Order Validation).</p>
+            
+            <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+                <input type="hidden" name="Product Name" id="modalProductName">
+                <input type="hidden" name="Price" id="modalProductPrice">
+                
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="Client Name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="Email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="Phone" required placeholder="+1 234 567 890">
+                </div>
+                <div class="form-group">
+                    <label>Full Shipping Address</label>
+                    <textarea name="Address" rows="3" required placeholder="Street, City, State, ZIP Code, Country"></textarea>
+                </div>
+                <button type="submit" class="submit-order-btn">Submit Order 🚀</button>
+            </form>
+        </div>
+    </div>
+
     <section class="features" id="features">
         <div class="features-grid">
-            <div class="feature"><span class="feature-icon">🚚</span><h3>Worldwide Shipping</h3><p>Fast and tracked delivery straight to your doorstep</p></div>
-            <div class="feature"><span class="feature-icon">🛡️</span><h3>Top Quality</h3><p>Carefully selected and tested items for maximum durability</p></div>
-            <div class="feature"><span class="feature-icon">💬</span><h3>24/7 Support</h3><p>Direct chat on WhatsApp for any inquiries or tracking</p></div>
+            <div class="feature"><span class="feature-icon">✈️</span><h3>Free Global Shipping</h3><p>Fast, tracked delivery options straight to your address</p></div>
+            <div class="feature"><span class="feature-icon">🛡️</span><h3>Secure Validation</h3><p>Your orders are handled with strict privacy and secure logs</p></div>
+            <div class="feature"><span class="feature-icon">⏱️</span><h3>30-Day Guarantee</h3><p>Hassle-free return policy if you are not fully satisfied</p></div>
         </div>
     </section>
     
@@ -168,5 +218,20 @@
         <div class="footer-logo">RX <span>SHOP</span></div>
         <p class="copyright">© 2026 RX SHOP - All Rights Reserved</p>
     </footer>
+
+    <script>
+        function openOrderModal(productName, price) {
+            document.getElementById('modalProductName').value = productName;
+            document.getElementById('modalProductPrice').value = price;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            let modal = document.getElementById('orderModal');
+            if (event.target == modal) { modal.style.display = 'none'; }
+        }
+    </script>
 </body>
 </html>
