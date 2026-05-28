@@ -28,8 +28,8 @@
         .product-card:hover .product-image { transform: scale(1.05); }
         .product-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .product-tag { display: inline-block; background: rgba(229, 9, 20, 0.2); color: #e50914; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; border: 1px solid rgba(229, 9, 20, 0.3); align-self: flex-start; }
-        .product-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: #ffffff; }
-        .product-desc { color: #888; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.6; }
+        .product-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: #ffffff; min-height: 50px; }
+        .product-desc { color: #888; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.6; min-height: 65px; }
         .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; }
         .price { font-size: 1.6rem; font-weight: 800; color: #e50914; }
         .buy-btn { background: #e50914; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-weight: 700; transition: all 0.3s ease; font-size: 0.95rem; cursor: pointer; font-family: 'Cairo', sans-serif; }
@@ -82,92 +82,98 @@
         <h2 class="section-title">🔥 Trending Viral Gadgets</h2>
         <div class="products-grid">
             
+            <!-- Product 1: Neck Fan -->
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?auto=format&fit=crop&w=500&q=80" alt="Neck Fan" class="product-image">
+                    <img src="https://ae01.alicdn.com/kf/S2c89dbf77c8e47e3a9c72e276f78ee9et.jpg" alt="8000mAh Bladeless Neck Fan" class="product-image">
                 </div>
                 <div class="product-info">
                     <span class="product-tag">Top Seller</span>
                     <h3 class="product-name">8000mAh Bladeless Neck Fan</h3>
-                    <p class="product-desc">Hands-free, quiet, wearable air cooler with a premium LED digital status display. Ideal for outdoor workouts and commuting.</p>
+                    <p class="product-desc">Portable, wearable, and mute rechargeable air cooler with an LED digital display. Stay cool hands-free outdoors.</p>
                     <div class="product-footer">
-                        <span class="price">$39.99</span>
-                        <button class="buy-btn" onclick="openOrderModal('8000mAh Bladeless Neck Fan', '$39.99')">Buy Now</button>
+                        <span class="price">$24.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('8000mAh Bladeless Neck Fan', '$24.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
             
+            <!-- Product 2: Camping Fan -->
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1618945203341-a6ff336049fe?auto=format&fit=crop&w=500&q=80" alt="Camping Fan" class="product-image">
+                    <img src="https://ae01.alicdn.com/kf/S0647c439f046460fbaefda199fbfd254o.jpg" alt="Xiaomi Wireless Camping Fan" class="product-image">
                 </div>
                 <div class="product-info">
                     <span class="product-tag">Hot Item</span>
-                    <h3 class="product-name">Wireless Outdoor Camping Fan</h3>
-                    <p class="product-desc">Heavy-duty 8000mAh rechargeable desktop air circulator and ceiling fan equipped with ultra-bright built-in LED lights.</p>
+                    <h3 class="product-name">Xiaomi Wireless Camping Fan</h3>
+                    <p class="product-desc">High-capacity 8000mAh desktop air circulator and ceiling fan with built-in LED light and heavy-duty clip-on mechanism.</p>
                     <div class="product-footer">
-                        <span class="price">$49.99</span>
-                        <button class="buy-btn" onclick="openOrderModal('Wireless Outdoor Camping Fan', '$49.99')">Buy Now</button>
+                        <span class="price">$31.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('Xiaomi Wireless Camping Fan', '$31.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
 
+            <!-- Product 3: Press Ice Tray -->
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1544211116-43d9b4b0051e?auto=format&fit=crop&w=500&q=80" alt="Ice Cube Box" class="product-image">
+                    <img src="https://ae01.alicdn.com/kf/Scb097b39f6fe4e9ab361fbccfeef697e3.jpg" alt="One-Press Ice Cube Maker Box" class="product-image">
                 </div>
                 <div class="product-info">
                     <span class="product-tag">Must Have</span>
                     <h3 class="product-name">One-Press Ice Cube Maker Box</h3>
-                    <p class="product-desc">Large capacity sleek storage solution. Freeze and instantly release dozens of perfect ice cubes with one single press.</p>
+                    <p class="product-desc">Large capacity ice storage mold. Release dozens of ice cubes instantly with just one simple press. Mess-free and quick.</p>
                     <div class="product-footer">
-                        <span class="price">$24.99</span>
-                        <button class="buy-btn" onclick="openOrderModal('One-Press Ice Cube Maker Box', '$24.99')">Buy Now</button>
+                        <span class="price">$14.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('One-Press Ice Cube Maker Box', '$14.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
 
+            <!-- Product 4: AI Smart Glasses -->
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=500&q=80" alt="Smart Glasses" class="product-image">
+                    <img src="https://ae01.alicdn.com/kf/Sb45362ff8bfa46258fca8b7835154ee0L.jpg" alt="MT5 Ultra AI Smart Glasses" class="product-image">
                 </div>
                 <div class="product-info">
                     <span class="product-tag">Futuristic</span>
                     <h3 class="product-name">MT5 Ultra AI Smart Glasses</h3>
-                    <p class="product-desc">Cutting-edge real-time audio translation glasses with a built-in 800W pixel HD camera for point-and-shoot recording.</p>
+                    <p class="product-desc">Real-time translation wearable device featuring an 800W pixel HD camera for instant photo and video recording on the go.</p>
                     <div class="product-footer">
-                        <span class="price">$119.99</span>
-                        <button class="buy-btn" onclick="openOrderModal('MT5 Ultra AI Smart Glasses', '$119.99')">Buy Now</button>
+                        <span class="price">$79.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('MT5 Ultra AI Smart Glasses', '$79.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
 
+            <!-- Product 5: Mosquito Swatter -->
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?auto=format&fit=crop&w=500&q=80" alt="Mosquito Zapper" class="product-image">
+                    <img src="https://ae01.alicdn.com/kf/S265eb04be3484f479d280e227038bb13b.jpg" alt="2-in-1 Foldable Mosquito Swatter" class="product-image">
                 </div>
                 <div class="product-info">
-                    <span class="product-tag">Home Utility</span>
+                    <span class="product-tag">Practical</span>
                     <h3 class="product-name">2-in-1 Foldable Mosquito Swatter</h3>
-                    <p class="product-desc">Smart electric bug zapper racket utilizing safe UV light traps to attract and eliminate insects instantly. USB Rechargeable.</p>
-                    <div class="product-footer">
-                        <span class="price">$19.99</span>
-                        <button class="buy-btn" onclick="openOrderModal('2-in-1 Foldable Mosquito Swatter', '$19.99')">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=500&q=80" alt="Smoothie Cup" class="product-image">
-                </div>
-                <div class="product-info">
-                    <span class="product-tag">Viral Trend</span>
-                    <h3 class="product-name">Magic Quick Freeze Slushie Cup</h3>
-                    <p class="product-desc">The viral DIY squeeze cup. Pour your favorite beverage, squeeze for less than a minute, and watch it turn into fresh slushie.</p>
+                    <p class="product-desc">Electric bug zapper bat with built-in purple UV light trap. Foldable design, USB rechargeable, safe and highly effective.</p>
                     <div class="product-footer">
                         <span class="price">$15.99</span>
-                        <button class="buy-btn" onclick="openOrderModal('Magic Quick Freeze Slushie Cup', '$15.99')">Buy Now</button>
+                        <button class="buy-btn" onclick="openOrderModal('2-in-1 Foldable Mosquito Swatter', '$15.99')">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: Smoothie Cup -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://ae01.alicdn.com/kf/Hddb8fc23e0ec4e9f8f41da809dbec7b4f.jpg" alt="Magic Quick Freeze Slushie Cup" class="product-image">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Fun & DIY</span>
+                    <h3 class="product-name">Magic Quick Freeze Slushie Cup</h3>
+                    <p class="product-desc">Squeeze homemade smoothie cup. Freeze the cup, pour your favorite juice or milk, squeeze it, and enjoy instant slushie!</p>
+                    <div class="product-footer">
+                        <span class="price">$13.99</span>
+                        <button class="buy-btn" onclick="openOrderModal('Magic Quick Freeze Slushie Cup', '$13.99')">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -179,9 +185,9 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeOrderModal()">&times;</span>
             <h3>Complete Your Order</h3>
-            <p>Please fill out your delivery details. No upfront payment required (Cash on Delivery Available / Order Validation).</p>
+            <p>Please fill out your delivery details to complete your request.</p>
             
-            <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+            <form action="https://formspree.io/f/xnjrwaln" method="POST">
                 <input type="hidden" name="Product Name" id="modalProductName">
                 <input type="hidden" name="Price" id="modalProductPrice">
                 
